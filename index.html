@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;1,500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div id="floaters" aria-hidden="true"></div>
+  <canvas id="confetti"></canvas>
+
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#letter">Letter</a>
+    <a href="#memories">Memories</a>
+    <a href="#reasons">Reasons</a>
+    <a href="#game">Game</a>
+    <a href="#wish">Wish</a>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <p class="eyebrow">✦ It's your special day ✦</p>
+    <h1 class="hero__title">Happy Birthday,<br /><span id="name" class="shine">Bubu</span></h1>
+    <p class="hero__sub">Celebrating the most wonderful person I know</p>
+    <button id="confettiBtn" class="btn">Celebrate 🎉</button>
+    <a href="#letter" class="scroll-hint" aria-label="Scroll down">⌄</a>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats reveal">
+    <div class="glass stat"><span>1</span><small>Year since we met</small></div>
+    <div class="glass stat"><span id="days">365</span><small>Days with you</small></div>
+    <div class="glass stat"><span>∞</span><small>Reasons to love you</small></div>
+  </section>
+
+  <!-- LETTER -->
+  <section id="letter" class="section reveal">
+    <h2>A Little Note For You</h2>
+    <div class="glass letter">
+      <p>Dear Bubu,</p>
+      <p>Exactly one year ago today, I met you. I didn't know it then, but that ordinary day turned into the best one of my year, and every day since has been better because you're in it.</p>
+      <p>You make the small things feel special. A normal evening, a quiet conversation, a silly joke, all of it becomes something I want to remember. With you, I feel understood, calm, and a little more like the person I want to be.</p>
+      <p>Today is your birthday, and I wish I could give you everything you deserve: endless laughter, big dreams coming true, and people who love you as much as you love them. Until then, I'll keep trying to be one of those people.</p>
+      <p>Thank you for this first year. I can't wait for all the ones that come after it.</p>
+      <p class="sign">Happy Birthday, my favorite person.<br />Yours always,<br />Dudu</p>
+    </div>
+  </section>
+
+  <!-- MEMORIES -->
+  <section id="memories" class="section reveal">
+    <h2>Our Memories</h2>
+    <div class="gallery">
+      <figure style="--r:-3deg"><img src="images/photo1.jpeg" alt="Memory 1" /><figcaption>Our first date</figcaption></figure>
+      <figure style="--r:2deg"><img src="images/photo2.jpeg" alt="Memory 2" /><figcaption>That trip</figcaption></figure>
+      <figure style="--r:-2deg"><img src="images/photo3.jpeg" alt="Memory 3" /><figcaption>Your smile</figcaption></figure>
+      <figure style="--r:3deg"><img src="images/photo4.jpeg" alt="Memory 4" /><figcaption>Just us</figcaption></figure>
+      <figure style="--r:-1deg"><img src="images/photo5.jpeg" alt="Memory 5" /><figcaption>Favorite day</figcaption></figure>
+      <figure style="--r:2deg"><img src="images/photo6.jpeg" alt="Memory 6" /><figcaption>Silly Bubu 🤪</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- REASONS -->
+  <section id="reasons" class="section reveal">
+    <h2>Reasons I Love You</h2>
+    <p class="hint">Tap a card</p>
+    <div class="reasons">
+      <div class="flip"><div class="flip__inner"><div class="flip__front">1</div><div class="flip__back">Your kindness</div></div></div>
+      <div class="flip"><div class="flip__inner"><div class="flip__front">2</div><div class="flip__back">Your smile and laugh</div></div></div>
+      <div class="flip"><div class="flip__inner"><div class="flip__front">3</div><div class="flip__back">Your strength</div></div></div>
+      <div class="flip"><div class="flip__inner"><div class="flip__front">4</div><div class="flip__back">How you care for people</div></div></div>
+      <div class="flip"><div class="flip__inner"><div class="flip__front">5</div><div class="flip__back">How easy it is to be myself with you</div></div></div>
+      <div class="flip"><div class="flip__inner"><div class="flip__front">6</div><div class="flip__back">You are simply you</div></div></div>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="game" class="section reveal">
+    <h2>Catch the Hearts 💖</h2>
+    <p class="hint">Move your mouse, finger, or ← → keys. Catch 💖 (+1) and 🎁 (+3). Dodge 💔 (−2). Score 20 to unlock a surprise!</p>
+    <div class="game glass">
+      <div class="game__bar">
+        <span>Score: <b id="score">0</b></span>
+        <span>Time: <b id="time">30</b>s</span>
+        <span>Best: <b id="best">0</b></span>
+      </div>
+      <div class="game__wrap">
+        <canvas id="gameCanvas" width="360" height="480"></canvas>
+        <div id="gameOverlay" class="game__overlay">
+          <h3 id="overlayTitle">Ready?</h3>
+          <p id="overlayText">Catch as many hearts as you can in 30 seconds.</p>
+          <button id="startBtn" class="btn btn--pink">Start Game</button>
+        </div>
+      </div>
+    </div>
+    <div id="surprise" class="glass surprise" hidden>
+      <h3>🎁 You unlocked a surprise!</h3>
+      <p class="coupon__label">This coupon entitles Bubu to</p>
+      <p class="coupon__title">One Dinner Date 🥂</p>
+      <p class="coupon__detail">📅 29th November 2026<br />🕖 7:00 PM<br />📍 Venue: to be revealed soon</p>
+      <p>Dress in your very best, because this is going to be the best night of your life. ✨</p>
+    </div>
+  </section>
+
+  <!-- WISH -->
+  <section id="wish" class="section wish reveal">
+    <h2>Make a Wish</h2>
+    <div class="cake" id="cake">
+      <div class="flame" id="flame"></div>
+      <div class="candle"></div>
+      <div class="layer layer--top"></div>
+      <div class="layer layer--bottom"></div>
+    </div>
+    <p id="wishText">Click the candle to blow it out 🕯️</p>
+  </section>
+
+  <footer class="footer">Made with ❤️ just for you</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
